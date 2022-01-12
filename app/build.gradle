@@ -17,6 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
+                abiFilters rootProject.ext.abiFilters.split(",")
                 cppFlags ''
             }
         }
