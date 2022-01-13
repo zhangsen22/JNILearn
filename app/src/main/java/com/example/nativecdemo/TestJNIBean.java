@@ -11,7 +11,7 @@ public class TestJNIBean{
     private static final String TAG = "TestJNIBean";
     // Used to load the 'native-lib' library on application startup.
     static {
-        System.loadLibrary("nativecdemo-lib");
+        System.loadLibrary("jnitools");
     }
 
     public static native void testLogInJNI();
