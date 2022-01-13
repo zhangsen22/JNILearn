@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.jni_log,R.id.jni_hello,R.id.jni_date,R.id.jni_static_random,R.id.jni_random,R.id.jni_method,R.id.jni_array
-    ,R.id.jni_more_param,R.id.jni_duo_tai,R.id.jni_string,R.id.jni_exception})
+    ,R.id.jni_more_param,R.id.jni_duo_tai,R.id.jni_string,R.id.jni_exception,R.id.jni_dongtai,R.id.jni_dongtai_more_param})
     void submit(View view) {
         switch (view.getId()){
             case R.id.jni_hello:
@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.jni_exception:
                 mTestJNIBean.testThrowException();
+                break;
+            case R.id.jni_dongtai:
+                break;
+            case R.id.jni_dongtai_more_param:
+                Toast.makeText(this, JNITools.sayHello(18, "aserbao", 100), Toast.LENGTH_LONG).show();
                 break;
         }
     }

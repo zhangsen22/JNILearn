@@ -150,6 +150,29 @@
             android:textSize="20sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/jni_dongtai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI动态注册实现加减乘除"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/jni_dongtai_more_param"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中带多参数的方法 动态注册"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+
     </LinearLayout>
 
 </ScrollView>
