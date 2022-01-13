@@ -349,6 +349,6 @@ Java_com_example_nativecdemo_TestJNIBean_testThrowException(JNIEnv *env, jobject
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_nativecdemo_Car_getCarName(JNIEnv *env, jobject){
-    std::string hello = "This is a beautiful car";
+    std::string hello = "This is a hello world";
     return env->NewStringUTF(hello.c_str());
 }

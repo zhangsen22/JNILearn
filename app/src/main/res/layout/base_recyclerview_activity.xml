@@ -1,86 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/base_recycler_view_fl"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_centerInParent="true"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/base_recycler_tv"
-            android:background="@color/white50"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:gravity="center|left"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI静态注册"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/base_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:visibility="gone"
-        android:id="@+id/show_data_content_rv"
-        android:layout_below="@+id/base_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/jni_hello"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="hello world"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
+        <TextView
+            android:id="@+id/jni_log"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI中打印日志"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
-    <FrameLayout
-        android:layout_marginTop="150dp"
-        android:id="@+id/base_recycler_empty_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/jni_date"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中的Date对象"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
-    <androidx.cardview.widget.CardView
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginRight="12dp"
-        app:cardCornerRadius="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:foreground="?attr/selectableItemBackground"
-                android:visibility="gone"
-                android:id="@+id/base_up_tv"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:text="top"
-                android:layout_marginBottom="0.5dp"
-                android:background="@color/black10"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
+        <TextView
+            android:id="@+id/jni_static_random"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中的静态Random带参数"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
-            <TextView
-                android:visibility="gone"
-                android:foreground="?attr/selectableItemBackground"
-                android:id="@+id/base_down_tv"
-                android:gravity="center"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:text="bottom"
-                android:background="@color/black10"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/jni_random"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中的Random带参数"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
+        <TextView
+            android:id="@+id/jni_method"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中的方法"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
+        <TextView
+            android:id="@+id/jni_more_param"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI调用Java中带多参数的方法"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/jni_duo_tai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI中多态的调用"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/jni_string"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI中调用Java中String"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/jni_array"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI中调用Java中基本数组"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/jni_exception"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/teal_200"
+            android:text="JNI中异常处理"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/teal_200"
+            android:text="JNI动态注册"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,93 +1,75 @@
 package com.example.nativecdemo;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.nativecdemo.base.BaseRecyclerViewActivity;
-import com.example.nativecdemo.base.beans.BaseRecyclerBean;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import butterknife.OnClick;
+import butterknife.ButterKnife;
 
-public class MainActivity extends BaseRecyclerViewActivity {
-    private static final String TAG = "MainActivity";
+public class MainActivity extends AppCompatActivity {
     private TestJNIBean mTestJNIBean;
-    public static final int TEST_LOG_IN_JNI = 0;
-    public static final int JNI_CALL_MOTHOD = 1;
-    public static final int JNI_CALL_DATE = 2;
-    public static final int JNI_CALL_RANDOM = 3;
-    public static final int JNI_STATIC_CALL_RANDOM = 4;
-    public static final int JNI_CALL_POLYMORPHISM = 5;
-    public static final int JNI_CALL_STRING = 6;
-    public static final int JNI_ARRAT = 7;
-    public static final int JNI_EXCEPTION = 8;
-
-
 
     @Override
-    public void initGetData() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.base_recyclerview_activity);
+        ButterKnife.bind(this);
         mTestJNIBean = new TestJNIBean();
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI中打印日志 ",TEST_LOG_IN_JNI));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中的Date对象 ",JNI_CALL_DATE));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中的静态Random带参数 ",JNI_STATIC_CALL_RANDOM));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中的Random带参数 ",JNI_CALL_RANDOM));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中的方法", JNI_CALL_MOTHOD));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中带多参数的第一种方法 ",2));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI调用Java中带多参数的第二种方法 ",21));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI修改Java对象的属性值",3));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI中多态的调用",JNI_CALL_POLYMORPHISM));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI中调用Java中String",JNI_CALL_STRING));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI中调用Java中基本数组",JNI_ARRAT));
-        mBaseRecyclerBeen.add(new BaseRecyclerBean("JNI中异常处理",JNI_EXCEPTION));
-
-
-
-        mBaseRecyclerTv.setText(new Car().getCarName());
     }
 
-    @Override
-    public void itemClickBack(View view, int position, boolean isLongClick) {
-        switch (position){
-            case TEST_LOG_IN_JNI:
+    @OnClick({R.id.jni_log,R.id.jni_hello,R.id.jni_date,R.id.jni_static_random,R.id.jni_random,R.id.jni_method,R.id.jni_array
+    ,R.id.jni_more_param,R.id.jni_duo_tai,R.id.jni_string,R.id.jni_exception})
+    void submit(View view) {
+        switch (view.getId()){
+            case R.id.jni_hello:
+                Toast.makeText(this, new Car().getCarName(), Toast.LENGTH_LONG).show();
+                break;
+            case R.id.jni_log:
                 TestJNIBean.testLogInJNI();
                 break;
-            case JNI_CALL_DATE:
+            case R.id.jni_date:
                 long newJavaDate = mTestJNIBean.testNewJavaDate();
                 Date myDate = new Date(newJavaDate);
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                mBaseRecyclerTv.setText(df.format(myDate));
+                Toast.makeText(this, df.format(myDate), Toast.LENGTH_LONG).show();
                 break;
-            case JNI_STATIC_CALL_RANDOM:
+            case R.id.jni_static_random:
                 long newJavaDateStatic = TestJNIBean.testNewStaticRandomParam(100);
-                mBaseRecyclerTv.setText("JNI中获取的随机数为："+String.valueOf(newJavaDateStatic));
+                Toast.makeText(this, "JNI中获取的随机数为："+String.valueOf(newJavaDateStatic), Toast.LENGTH_LONG).show();
                 break;
-            case JNI_CALL_RANDOM:
+            case R.id.jni_random:
                 int testNewRandomParam = mTestJNIBean.testNewRandomParam(100);
-                mBaseRecyclerTv.setText("JNI中获取的随机数为："+String.valueOf(testNewRandomParam));
+                Toast.makeText(this, "JNI中获取的随机数为："+String.valueOf(testNewRandomParam), Toast.LENGTH_LONG).show();
                 break;
-            case JNI_CALL_MOTHOD:
+            case R.id.jni_method:
                 String staticCallMethod = mTestJNIBean.testStaticCallMethod();
                 String staticCallStaticMethod = mTestJNIBean.testStaticCallStaticMethod();
-                mBaseRecyclerTv.setText("JNI调用Java中的方法：非静态结果："+ mTestJNIBean.testCallMethod()
+                Toast.makeText(this, "JNI调用Java中的方法：非静态结果："+ mTestJNIBean.testCallMethod()
                         + "\n 静态结果：" + staticCallMethod
-                        + "\n JNI中调用Java中的静态方法 = "  + staticCallStaticMethod) ;
+                        + "\n JNI中调用Java中的静态方法 = "  + staticCallStaticMethod, Toast.LENGTH_LONG).show();
                 break;
-            case JNI_ARRAT:
+            case R.id.jni_array:
                 mTestJNIBean.testGetTArrayElement();
                 break;
-            case 21:
+            case R.id.jni_more_param:
                 String methodParamList = mTestJNIBean.testCallMethodParamList2(18, "aserbao", 100);
-                mBaseRecyclerTv.setText(methodParamList);
+                Toast.makeText(this, methodParamList, Toast.LENGTH_LONG).show();
                 break;
-            case JNI_CALL_POLYMORPHISM:
+            case R.id.jni_duo_tai:
                 String callChildMethod = mTestJNIBean.testCallChildMethod();
                 String callFatherMethod = mTestJNIBean.testCallFatherMethod();
-                mBaseRecyclerTv.setText("JNI调用子类对象的方法："+ callChildMethod + "\n 调用父类对象方法的结果为：" + callFatherMethod);
+                Toast.makeText(this, "JNI调用子类对象的方法："+ callChildMethod + "\n 调用父类对象方法的结果为：" + callFatherMethod, Toast.LENGTH_LONG).show();
                 break;
-            case JNI_CALL_STRING:
+            case R.id.jni_string:
                 String aserbao = TestJNIBean.testChangeString("aserbao");
-                mBaseRecyclerTv.setText(aserbao);
+                Toast.makeText(this, aserbao, Toast.LENGTH_LONG).show();
                 break;
-            case JNI_EXCEPTION:
+            case R.id.jni_exception:
                 mTestJNIBean.testThrowException();
                 break;
         }
