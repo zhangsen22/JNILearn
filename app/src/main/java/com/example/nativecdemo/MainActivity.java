@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 mTestJNIBean.testThrowException();
                 break;
             case R.id.jni_dongtai:
+                Toast.makeText(this, JNITools.add(18, 100)+"", Toast.LENGTH_LONG).show();
                 break;
             case R.id.jni_dongtai_more_param:
                 Toast.makeText(this, JNITools.sayHello(18, "aserbao", 100), Toast.LENGTH_LONG).show();
